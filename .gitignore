@@ -6,6 +6,9 @@ Thumbs.db
 #Pycharm project files
 .idea
 
+# Visual Studio compiled
+.vscode
+
 .settings
 ._*
 *.swp
