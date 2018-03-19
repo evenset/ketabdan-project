@@ -3,7 +3,7 @@ Thumbs.db
 *.DS_Store
 *.empty
 
-#pycharm project files
+#Pycharm project files
 .idea
 
 .settings
@@ -70,7 +70,7 @@ media/
 static/
 
 
-#sqllite
+#sqlite
 db.sqlite3
 
 #node files
