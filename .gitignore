@@ -1,0 +1,94 @@
+# cache directories
+Thumbs.db
+*.DS_Store
+*.empty
+
+#Pycharm project files
+.idea
+
+# Visual Studio compiled
+.vscode
+
+.settings
+._*
+*.swp
+*.pyc
+*.bak
+
+
+# sass cache files
+*.sass-cache
+
+# mac deployment helpers
+switch
+index
+
+# runtime and cache directories
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+
+# C extensions
+*.so
+
+## build files
+assets/ui/build.js
+assets/ui/main.css
+
+# Distribution / packaging
+.Python
+env/
+bin/
+develop-eggs/
+eggs/
+lib/
+lib64/
+parts/
+var/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Installer logs
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Unit test / coverage reports
+htmlcov/
+.tox/
+.coverage
+.cache
+nosetests.xml
+coverage.xml
+
+# Translations
+*.mo
+
+# Django stuff:
+*.log
+*.log.*
+*.log~
+*.pot
+media/
+static/
+
+
+#sqlite
+db.sqlite3
+
+#node files
+node_modules
+
+#bower files
+bower_components
+.vagrant/
+*.retry
+
+#celery beat files
+celerybeat-schedule
+celerybeat-schedule.db
+
+
+*.swp
+*.swo
+*~
