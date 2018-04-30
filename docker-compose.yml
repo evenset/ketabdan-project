@@ -3,7 +3,9 @@ version: '3'
 services:
   db:
     image: postgres
+    container_name: ketabdan_db
   web:
+    container_name: ketabdan_web
     build: .
     command: python3 manage.py runserver 0.0.0.0:8000
     volumes:
