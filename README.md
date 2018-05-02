@@ -22,3 +22,28 @@ You need to install Docker and Docker compose to be able to run this locally. Af
 ```bash
 docker-compose up
 ```
+
+## Useful commands
+### Docker-compose
+Build coker imgages
+```bash
+docker-compose build
+```
+
+Start/Stop dockers
+```bash
+docker-compose up
+docker-compose down
+```
+Run Django commands
+```bash
+docker-compose run web python manage.py makemigrations
+```
+_Remember if you commands create files in your project directory, you need to change the permissions from root to
+your local user by `sudo chown -R local_user_name:local_user_group directory`_
+
+### Django
+In recent versions of Django you need to create the migrations like this:
+```bash
+python manage.py makemigrations podcasts
+```
