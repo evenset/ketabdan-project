@@ -22,3 +22,10 @@ You need to install Docker and Docker compose to be able to run this locally. Af
 ```bash
 docker-compose up
 ```
+
+## Useful commands
+### Django
+In recent versions of Django you need to create the migrations like this:
+```bash
+python manage.py makemigrations podcasts
+```
