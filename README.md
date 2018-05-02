@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.com/evenset/ketabdan-project.svg?branch=develop)](https://travis-ci.com/evenset/ketabdan-project)
+
 # Ketabdan
 
 Ketabdan is an open source platform to publish electronic books, podcasts, short stories and more
