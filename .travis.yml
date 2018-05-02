@@ -1,11 +1,11 @@
 
 sudo: no
-dist: trusty
+dist: bionic
 addons:
   postgresql: "9.5"
 language: python
 python:
-  - "3.5"
+  - "3.6"
 env:
   - TOXENV=py35-tests
   - TOXENV=py35-flake8
