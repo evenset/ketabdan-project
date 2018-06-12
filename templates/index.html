@@ -1,1 +1,16 @@
-<p>Test</p>
+<!DOCTYPE html>
+<html lang="en">
+{% load staticfiles %}
+<head>
+    <title>
+        {% block title %} If you see this, it means title is not set in the page- Default title in base.html
+        {% endblock %}
+    </title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+</head>
+
+{% block content %}This is the content area{% endblock %}
+
+</body>
+</html>
