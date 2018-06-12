@@ -41,6 +41,7 @@ DJANGO_APPS = [
 
 PROJECT_APPS = [
     'podcasts.apps.PodcastsConfig',
+    'staticpages.apps.StaticpagesConfig',
 ]
 
 INSTALLED_APPS = DJANGO_APPS + PROJECT_APPS
