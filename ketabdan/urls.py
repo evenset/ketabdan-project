@@ -15,8 +15,10 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from staticpages.views import IndexView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('podcasts/', include('podcasts.urls'))
+    path('podcasts/', include('podcasts.urls')),
+    path('', IndexView.as_view())
 ]
