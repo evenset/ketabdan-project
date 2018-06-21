@@ -1,0 +1,10 @@
+{
+    "name": "ketabdan",
+    "env": {
+        "KETABDAN_DB_USER": "@ketabdan_db_user",
+        "KETABDAN_DB_NAME": "@ketabdan_db_name",
+        "KETABDAN_DB_HOST" :  "@ketabdan_db_host",
+        "KETABDAN_DB_PASSWORD": "@ketabdan_db_password",
+        "BUILD_ENV": "PRODUCTION"
+    }
+}

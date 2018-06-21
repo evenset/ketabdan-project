@@ -1,4 +1,6 @@
 Django==2.0.3
+gunicorn==19.8.1
 Pillow==5.1.0
 psycopg2-binary==2.7.4
 pytz==2018.3
+whitenoise==3.3.1

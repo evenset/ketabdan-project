@@ -22,3 +22,4 @@ urlpatterns = [
     path('podcasts/', include('podcasts.urls')),
     path('', IndexView.as_view())
 ]
+

@@ -6,11 +6,14 @@ services:
     container_name: ketabdan_db
   web:
     container_name: ketabdan_web
-    build: .
-    command: python3 manage.py runserver 0.0.0.0:8000
+    build:
+      context: .
+      dockerfile: Dockerfile-local
+    command: bash -c "python manage.py collectstatic --noinput & gunicorn ketabdan.wsgi -b 0.0.0.0:8000 --reload"
     volumes:
       - .:/code
     ports:
       - "8000:8000"
     depends_on:
       - db
+

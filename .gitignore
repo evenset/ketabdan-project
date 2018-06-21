@@ -71,6 +71,7 @@ coverage.xml
 *.pot
 media/
 static/
+staticfiles/
 
 
 #sqlite
