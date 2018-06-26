@@ -7,46 +7,10 @@
 
 {% block content %}
 
-<h1>{% trans "Sign In" %}</h1>
-
-{% get_providers as socialaccount_providers %}
-
-{% if socialaccount_providers %}
-<p>{% blocktrans with site.name as site_name %}Hello, Please sign in with one
-of your existing third party accounts. Or, <a href="{{ signup_url }}">sign up</a>
-for a {{ site_name }} account and sign in below:{% endblocktrans %}</p>
-
-<div class="socialaccount_ballot">
-
-  <ul class="socialaccount_providers">
-    {% include "socialaccount/snippets/provider_list.html" with process="login" %}
-  </ul>
-
-  <div class="login-or">{% trans 'or' %}</div>
-
-</div>
-
-{% include "socialaccount/snippets/login_extra.html" %}
-
-{% else %}
-<p>{% blocktrans %}If you have not created an account yet, then please
-<a href="{{ signup_url }}">sign up</a> first.{% endblocktrans %}</p>
-{% endif %}
-
-<form class="login" method="POST" action="{% url 'account_login' %}">
-  {% csrf_token %}
-  {{ form.as_p }}
-  {% if redirect_field_value %}
-  <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
-  {% endif %}
-  <a class="button secondaryAction" href="{% url 'account_reset_password' %}">{% trans "Forgot Password?" %}</a>
-</form>
-
-
     <div class="container py-5">
     <div class="row">
         <div class="col-md-12">
-            <h2 class="text-center mb-4">Login to Ketabdan</h2>
+            <h2 class="text-center mb-4">Login to {% blocktrans with site.name as site_name %}{{ site_name }} {% endblocktrans %}</h2>
             <div class="row">
                 <div class="col-md-6 mx-auto">
                     <div class="card rounded-0">
@@ -57,31 +21,34 @@ for a {{ site_name }} account and sign in below:{% endblocktrans %}</p>
                             <form class="form" role="form" autocomplete="off" id="formLogin" novalidate="" method="POST" action="{% url 'account_login' %}">
                                 {% csrf_token %}
                                 <div class="form-group">
-                                    <label for="{{ form.login.id_for_label }}">Email</label>
+                                    <label for="{{ form.login.id_for_label }}">{{ form.login.label }}</label>
                                     <input type="text" class="form-control form-control-lg rounded-0" name="{{ form.login.name }}" placeholder="{{ form.login.label }}" id="{{ form.login.id_for_label }}" required>
-                                    <div class="invalid-feedback">{{ form.login.error }}</div>
+                                    <small id="passwordHelpBlock" class="form-text text-danger">{{ form.login.errors }}</small>
                                 </div>
                                 <div class="form-group">
                                     <label for="{{ form.password.id_for_label }}">Password</label>
                                     <input type="password" class="form-control form-control-lg rounded-0" id="id_password" placeholder="{{ form.password.label }}" required autocomplete="new-password">
-                                    <div class="invalid-feedback">Enter your password too!</div>
+                                    <small id="passwordHelpBlock" class="form-text text-danger">{{ form.password.errors }}</small>
                                 </div>
                                 <div class="form-check">
                                     <input type="checkbox" name="remember" id="remember_me" class="form-check-input">
                                     <label class="form-check-label" for="{{ form.remember.id_for_label }}">
                                         Remember me
                                     </label>
-                                </div>
-                                  {% if redirect_field_value %}
-                                    <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
-                                  {% endif %}
-                                <div>
-                                    <a class="btn btn-outline-info btn-md" href="{% url 'account_reset_password' %}">{% trans "Forgot Password?" %}</a>
-                                    <button type="submit" class="btn btn-success btn-lg float-right" id="btnLogin">{% trans "Sign In" %}</button>
+
                                 </div>
                                 <hr>
-                                <button type="button" class="btn btn-primary btn-lg btn-block">Or sign in with Google</button>
+                                <div class="d-flex flex-row justify-content-between">
+                                    <a class="font-weight-light p-2" href="{% url 'account_reset_password' %}">{% trans "Forgot Password?" %}</a>
+                                    <button type="submit" class="btn btn-primary btn-lg" id="btnLogin">{% trans "Sign In" %}</button>
+                                </div>
+                                <hr>
+                                {% if redirect_field_value %}
+                                    <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+                                {% endif %}
                             </form>
+                            <a class="btn btn-outline-success btn-lg btn-block" href="{{ signup_url }}">Register</a>
+                            <a class="btn btn-outline-danger btn-lg btn-block" href="/accounts/google/login/?process=login">Sign in with Google</a>
                         </div>
                     </div>
                 </div>
