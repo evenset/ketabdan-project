@@ -1,13 +1,19 @@
 {% extends 'base/index.html' %}
-
+{% load staticfiles %}
 {% block title %}
     Welcome to Ketabdan online publishing
 {% endblock %}
 {% block content %}
     <div class="container-fluid">
-        <div class="row">
+        <div class="row mt-2">
             <div class="col">
-              <h2>Welcome to Ketabdan Online Publishing</h2>
+                <div class="media">
+                    <img class="mr-3 .d-none .d-sm-block" src="{% static '/img/ketabdan-colored-logo.png' %}" alt="Ketabdan Online publishing" style="max-width: 150px;">
+                    <div class="media-body">
+                        <h4 class="mt-0">Welcome to Ketabdan online publishing</h4>
+                        Ketabdan online publishing is an opensource platform which facilitates publishing digital contents on Internet.
+                    </div>
+                </div>
             </div>
         </div>
     </div>
