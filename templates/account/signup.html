@@ -1,0 +1,54 @@
+{% extends "base/index.html" %}
+{% load i18n %}
+{% load account socialaccount %}
+
+{% block title %}{% trans "Signup" %}{% endblock %}
+
+{% block content %}
+        <div class="container py-5">
+        <div class="row">
+            <div class="col-md-12">
+                <h2 class="text-center mb-4">Register in Ketabdan</h2>
+                <div class="row">
+                    <div class="col-md-6 mx-auto">
+                        <div class="card rounded-0">
+                            <div class="card-header">
+                                <h3 class="mb-0">Login</h3>
+                            </div>
+                            <div class="card-body">
+                                <form class="form" role="form" id="signup_form" method="post" action="{% url 'account_signup' %}">
+                                    {% csrf_token %}
+                                    <div class="form-group">
+                                        <label for="{{ form.email.id_for_label }}">{{ form.email.label }}</label>
+                                        <input type="text" class="form-control form-control-lg rounded-0" name="{{ form.email.name }}" placeholder="{{ form.email.label }}" id="{{ form.email.id_for_label }}" required>
+                                        <small id="passwordHelpBlock" class="form-text text-danger">{{ form.email.errors }}</small>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="{{ form.password1.id_for_label }}">Password</label>
+                                        <input type="password" class="form-control form-control-lg rounded-0" id="id_password1" placeholder="{{ form.password1.label }}" name="password1" required aria-autocomplete="list" autocomplete="new-password">
+                                        <small id="passwordHelpBlock" class="form-text text-danger">{{ form.password1.errors }}</small>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="{{ form.password2.id_for_label }}">Password (again)</label>
+                                        <input type="password" class="form-control form-control-lg rounded-0" id="id_password2" placeholder="{{ form.password2.label }}" name="password2" required aria-autocomplete="list">
+                                        <small id="passwordHelpBlock" class="form-text text-danger">{{ form.password2.errors }}</small>
+                                    </div>
+                                    <div class="d-flex flex-row justify-content-between">
+                                        <button type="submit" class="btn btn-primary btn-lg btn-block" id="btnsignUp">{% trans "Sign Up" %} &raquo;</button>
+                                    </div>
+                                    <hr>
+                                    <p>{% blocktrans %}Already have an account? Then please <a href="{{ login_url }}">sign in</a>.{% endblocktrans %}</p>
+                                    {% if redirect_field_value %}
+                                      <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+                                    {% endif %}
+                                </form>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

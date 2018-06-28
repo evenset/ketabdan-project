@@ -1,0 +1,59 @@
+{% extends "base/index.html" %}
+
+{% load i18n %}
+{% load account socialaccount %}
+
+{% block title %}{% trans "Sign In" %}{% endblock %}
+
+{% block content %}
+    <div class="container py-5">
+        <div class="row">
+            <div class="col-md-12">
+                <h2 class="text-center mb-4">Login to {% blocktrans with site.name as site_name %}{{ site_name }} {% endblocktrans %}</h2>
+                <div class="row">
+                    <div class="col-md-6 mx-auto">
+                        <div class="card rounded-0">
+                            <div class="card-header">
+                                <h3 class="mb-0">Login</h3>
+                            </div>
+                            <div class="card-body">
+                                <form class="form" role="form" autocomplete="off" id="formLogin" novalidate="" method="POST" action="{% url 'account_login' %}">
+                                    {% csrf_token %}
+                                    <div class="form-group">
+                                        <label for="{{ form.login.id_for_label }}">{{ form.login.label }}</label>
+                                        <input type="text" class="form-control form-control-lg rounded-0" name="{{ form.login.name }}" placeholder="{{ form.login.label }}" id="{{ form.login.id_for_label }}" required>
+                                        <small id="passwordHelpBlock" class="form-text text-danger">{{ form.login.errors }}</small>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="{{ form.password.id_for_label }}">Password</label>
+                                        <input type="password" class="form-control form-control-lg rounded-0" id="id_password" placeholder="{{ form.password.label }}" name="password" required>
+                                        <small id="passwordHelpBlock" class="form-text text-danger">{{ form.password.errors }}</small>
+                                    </div>
+                                    <div class="form-check">
+                                        <input type="checkbox" name="remember" id="remember_me" class="form-check-input">
+                                        <label class="form-check-label" for="{{ form.remember.id_for_label }}">
+                                            Remember me
+                                        </label>
+
+                                    </div>
+                                    <hr>
+                                    <div class="d-flex flex-row justify-content-between">
+{#                                        <a class="font-weight-light p-2" href="{% url 'account_reset_password' %}">{% trans "Forgot Password?" %}</a>#}
+                                        <button type="submit" class="btn btn-primary btn-lg" id="btnLogin">{% trans "Sign In" %}</button>
+                                    </div>
+                                    <hr>
+                                    {% if redirect_field_value %}
+                                        <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+                                    {% endif %}
+                                </form>
+                                <a class="btn btn-outline-success btn-lg btn-block" href="{{ signup_url }}">Register</a>
+                                <a class="btn btn-outline-danger btn-lg btn-block" href="/accounts/google/login/?process=login">Sign in or Register with Google</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
