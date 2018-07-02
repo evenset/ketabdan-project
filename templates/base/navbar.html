@@ -15,11 +15,12 @@
               <ul class="navbar-nav ml-auto">
                 <li class="nav-item dropdown">
                   <a class="nav-link dropdown-toggle" href="#'>  id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Sign In
+                    Account
                   </a>
                   <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                      <a class="dropdown-item" href="{{ login_url }}">sign in</a>
-                       <a class="dropdown-item"  href="{{ signup_url }}">Register</a>
+                       <a class="dropdown-item" href="{{ login_url }}">Sign in</a>
+                       <a class="dropdown-item" href="{{ signup_url }}">Register</a>
+                       <a class="dropdown-item" href="{% url 'account_logout' %}">Logout</a>
                   </div>
                 </li>
               </ul>
