@@ -19,7 +19,7 @@
                             <div class="card-body">
                                 <a class="btn btn-outline-danger btn-lg btn-block" href="/accounts/google/login/?process=login">Sign in or Register with Google</a>
                             </div>
-                            <div class="card-footer">
+                            <div class="card-footer bg-transparent">
                                     <p>Or login with your email and password</p>
                                     <form class="form" role="form" autocomplete="off" id="formLogin" novalidate="" method="POST" action="{% url 'account_login' %}">
                                             {% csrf_token %}
@@ -42,13 +42,13 @@
                                             </div>
                                             <hr>
                                             <div class="d-flex flex-row justify-content-between">
-                                                <a class="font-weight-light p-2" href="{% url 'account_reset_password' %}">{% trans "Forgot Password?" %}</a>
+                                            {#    <a class="font-weight-light p-2" href="{% url 'account_reset_password' %}">{% trans "Forgot Password?" %}</a> #}
                                                 <button type="submit" class="btn btn-primary btn-lg" id="btnLogin">{% trans "Sign In" %}</button>
                                             </div>
                                             {% if redirect_field_value %}
                                                 <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
                                             {% endif %}
-                                        </form>
+                                    </form>
                             </div>
                         </div>
                         Don't have an account? Feel free to <a href="{{ signup_url }}"> Register</a> 
