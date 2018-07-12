@@ -8,7 +8,6 @@ class ShortStory(models.Model):
         ('b' , 'Banned'),
         ('de', 'Deleted'),
     )
-
     author = models.Foreignkey(User,on_delete = models.CASCADE)
     title = models.CharField(max_length = 500)
     body = models.CharField(min_length = 3500)
