@@ -34,6 +34,7 @@ ALLOWED_HOSTS = ['*']
 # Application definition
 
 DJANGO_APPS = [
+    'shortstories.apps.ShortstoriesConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.sites',
@@ -55,6 +56,7 @@ PROJECT_APPS = [
 INSTALLED_APPS = DJANGO_APPS + PROJECT_APPS
 
 MIDDLEWARE = [
+
     'django.middleware.security.SecurityMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
