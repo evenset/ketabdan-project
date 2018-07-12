@@ -1,5 +1,5 @@
 from django.db import models
-from django.conf import settings
+from django.contrib.autuh.models import  user
 
 class ShortStory(models.Model):
      PUBLICATION_STATUS =(
