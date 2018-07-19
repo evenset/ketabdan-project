@@ -1,6 +1,9 @@
 from django.http import HttpResponse
+from .models import ShortStory 
+
 def index(request):
-    return  HttpResponse('Author,Title,Status,Publication_Date')
+
+    return  HttpResponse("You Will See ShortStory here")
 
 
 
