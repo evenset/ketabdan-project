@@ -1,9 +1,9 @@
 from django.http import HttpResponse
-from .models import ShortStory 
+from ketabdan-project.shortstories.models import ShortStory 
 
 def index(request):
-
-    return  HttpResponse("You Will See ShortStory here")
+    ShortStory_List= ShortStory.objects.all()
+    return  HttpResponse(ShortStory_List)
 
 
 
