@@ -1,9 +1,7 @@
-from django.http import HttpResponse
-from ketabdan-project.shortstories.models import ShortStory 
+from django.shortcuts import render
+from .models import ShortStory 
 
 def index(request):
-    ShortStory_List= ShortStory.objects.all()
-    return  HttpResponse(ShortStory_List)
-
-
-
+    shortstory_list = ShortStory.objects.all()
+    context = {"short_story" : shortstory_list}
+    return render(request, 'shortstories/index.html', context)
