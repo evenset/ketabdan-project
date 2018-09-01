@@ -9,14 +9,22 @@
        Author
       </div>
       <div class="col-sm">
-        Title
-      </div>
-      <div class="col-sm">
-        Status
-      </div>
-      <div class="col-sm">
-        Publication_date
-        </div>
+          {% if shortstories %}
+          <ul>
+          {% for ShortStory in shortstories %}
+              <li><a >{{ShortStory.title}}</a></li>
+              <div class="col-sm">
+              <li><a >{{ShortStory.status}}</a></li>
+              </div>
+              <div class="col-sm">
+            <li><a >{{ShortStory.publication_date}}</a></li>
+              </div>
+          {% endfor %}
+          </ul>
+      {% else %}
+          <p>No polls are available.</p>
+      {% endif %}
     </div>
-  </div>
+    </div>
+</div>
   {% endblock %}
