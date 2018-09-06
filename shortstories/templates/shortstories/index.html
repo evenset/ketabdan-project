@@ -4,15 +4,15 @@
 {% endblock %}
 {% block content %}
 <div class="row">
-            {% if shortstories %}
-            {% for ShortStory in shortstories %}
+    {% if shortstories %}
+        {% for short_story in shortstories %}
             <div class="w-50"></div>
-                <div class="col col-lg-2">{{ShortStory.title}}</div>
-                <div class="col-md-auto">{{ShortStory.status}}</div>
-                <div class="col col-lg-2">{{ShortStory.publication_date}}</div>
-                {% endfor %}
-                {% else %}
-                <p>No ShortStories availabale</p>
-                {% endif %}    
+            <div class="col col-lg-2">{{short_story.title}}</div>
+            <div class="col-md-auto">{{short_story.status}}</div>
+            <div class="col col-lg-2">{{short_story.publication_date}}</div>
+        {% endfor %}
+    {% else %}
+        <p>No short stories available</p>
+    {% endif %}    
 </div>
-  {% endblock %}
+{% endblock %}
