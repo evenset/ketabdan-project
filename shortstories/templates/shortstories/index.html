@@ -3,28 +3,16 @@
     ShortStories
 {% endblock %}
 {% block content %}
-<div class="container">
-    <div class="row">
-      <div class="col-sm">
-       Author
-      </div>
-      <div class="col-sm">
-          {% if shortstories %}
-          <ul>
-          {% for ShortStory in shortstories %}
-              <li><a >{{ShortStory.title}}</a></li>
-              <div class="col-sm">
-              <li><a >{{ShortStory.status}}</a></li>
-              </div>
-              <div class="col-sm">
-            <li><a >{{ShortStory.publication_date}}</a></li>
-              </div>
-          {% endfor %}
-          </ul>
-      {% else %}
-          <p>No polls are available.</p>
-      {% endif %}
-    </div>
-    </div>
+<div class="row">
+            {% if shortstories %}
+            {% for ShortStory in shortstories %}
+            <div class="w-50"></div>
+                <div class="col col-lg-2">{{ShortStory.title}}</div>
+                <div class="col-md-auto">{{ShortStory.status}}</div>
+                <div class="col col-lg-2">{{ShortStory.publication_date}}</div>
+                {% endfor %}
+                {% else %}
+                <p>No ShortStories availabale</p>
+                {% endif %}    
 </div>
   {% endblock %}
