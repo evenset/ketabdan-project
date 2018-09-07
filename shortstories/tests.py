@@ -25,6 +25,8 @@ class shortstoriesDetailViewTests(TestCase):
 
 class shortstoriesDetailViewTests(TestCase):
     def  test_no_shortstories(self):
-        response = self.client.get(reverse('shortstories:detail'))
-        self.assertEqual(response.status_code, 404)
-        self.assertContains(response, "No short stories available")
+        user_id = User.objects.create(id=1)
+        current_shortstories = create_shortstories(author= user_id,status = 'p',title = "Villete",publication_date ='2000-08-25')
+        response = self.client.get(reverse('shortstories:detail',args=(current_shortstories.id,)))
+        self.assertEqual(response.status_code, 4)
+
