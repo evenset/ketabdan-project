@@ -22,3 +22,9 @@ class shortstoriesDetailViewTests(TestCase):
         url = reverse('shortstories:index')
         response = self.client.get(url)
         self.assertContains(response, current_shortstories.title)
+
+class shortstoriesDetailViewTests(TestCase):
+    def  test_no_shortstories(self):
+        response = self.client.get(reverse('shortstories:detail'))
+        self.assertEqual(response.status_code, 404)
+        self.assertContains(response, "No short stories available")
