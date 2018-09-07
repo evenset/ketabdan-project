@@ -15,7 +15,7 @@ class shortstoriesIndexViewTests(TestCase):
         self.assertContains(response, "No short stories available")
 
 
-class shortstoriesDetailViewTests(TestCase):
+class shortstoriesIndexlViewTests(TestCase):
     def  test_current_shortstories(self):
         user_id = User.objects.create(id=1)
         current_shortstories = create_shortstories(author= user_id,status = 'p',title = "Villete",publication_date ='2000-08-25')
@@ -30,3 +30,10 @@ class shortstoriesDetailViewTests(TestCase):
         current_shortstories = create_shortstories(author= user_id, status = 'p', title = "Villete", publication_date ='2000-08-25')
         response = self.client.get(reverse('shortstories:detail', args=(current_shortstories.id,)))
         self.assertEqual(response.status_code, 404)
+
+class shortstoriesDetailViewTests(TestCase):
+    def  test_current_shortstories(self):
+        user_id = User.objects.create(id=1)
+        current_shortstories = create_shortstories(author= user_id, status = 'p', title = "Villete", publication_date ='2000-08-25')
+        response = self.client.get(reverse('shortstories:detail', args=(current_shortstories.id,)))
+        self.assertContains(response, current_shortstories.title)
