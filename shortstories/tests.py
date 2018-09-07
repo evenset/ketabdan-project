@@ -23,9 +23,10 @@ class shortstoriesDetailViewTests(TestCase):
         response = self.client.get(url)
         self.assertContains(response, current_shortstories.title)
 
+
 class shortstoriesDetailViewTests(TestCase):
     def  test_no_shortstories(self):
         user_id = User.objects.create(id=1)
-        current_shortstories = create_shortstories(author= user_id,status = 'p',title = "Villete",publication_date ='2000-08-25')
-        response = self.client.get(reverse('shortstories:detail',args=(current_shortstories.id,)))
+        current_shortstories = create_shortstories(author= user_id, status = 'p', title = "Villete", publication_date ='2000-08-25')
+        response = self.client.get(reverse('shortstories:detail', args=(current_shortstories.id,)))
         self.assertEqual(response.status_code, 404)
