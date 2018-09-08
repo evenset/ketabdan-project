@@ -25,15 +25,15 @@ class shortstoriesIndexlViewTests(TestCase):
 
 
 class shortstoriesDetailViewTests(TestCase):
-    def  test_no_shortstories(self):
+    def  test_no_shortstory(self):
         user_id = User.objects.create(id=1)
-        current_shortstories = create_shortstories(author= user_id, status = 'p', title = "Villete", publication_date ='2000-08-25')
-        response = self.client.get(reverse('shortstories:detail', args=(current_shortstories.id,)))
+        current_shortstory = create_shortstories(author= user_id, status = 'p', title = "Villete", publication_date ='2000-08-25')
+        response = self.client.get(reverse('shortstories:detail', args=(current_shortstory.id,)))
         self.assertEqual(response.status_code, 404)
 
 class shortstoriesDetailViewTests(TestCase):
-    def  test_current_shortstories(self):
+    def  test_current_shortstory(self):
         user_id = User.objects.create(id=1)
-        current_shortstories = create_shortstories(author= user_id, status = 'p', title = "Villete", publication_date ='2000-08-25')
-        response = self.client.get(reverse('shortstories:detail', args=(current_shortstories.id,)))
-        self.assertContains(response, current_shortstories.title)
+        current_shortstory = create_shortstories(author= user_id, status = 'p', title = "Villete", publication_date ='2000-08-25')
+        response = self.client.get(reverse('shortstories:detail', args=(current_shortstory.id,)))
+        self.assertContains(response, current_shortstory.title)
