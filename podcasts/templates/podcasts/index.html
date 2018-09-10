@@ -5,10 +5,10 @@ podcasts
 {% block content %}
 <div class="row">
     {% if podcasts %}
-        {% for pod_casts in podcasts %}
+        {% for podcast in podcasts %}
             <div class="w-50"></div>
-            <div class="col col-lg-2">{{pod_casts.name}}</div>
-            <div class="col-md-auto">{{pod_casts.description}}</div>
+            <div class="col col-lg-2">{{podcast.name}}</div>
+            <div class="col-md-auto">{{podcast.description}}</div>
         {% endfor %}
     {% else %}
         <p>No podcast available</p>
