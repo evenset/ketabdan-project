@@ -1,0 +1,11 @@
+{% extends 'base/index.html' %}
+{% block title %}
+podcasts
+{% endblock %}
+{% block content %}
+<div class="row">
+        <div class="w-50"></div>
+        <div class="col col-lg-2">{{podcast.name}}</div>
+        <div class="col-md-auto">{{podcast.description}}</div>
+</div>
+{% endblock %}

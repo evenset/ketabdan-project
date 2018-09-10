@@ -8,5 +8,5 @@ def index(request):
     return render(request, 'shortstories/index.html', context)
 
 def detail(request, shortstory_id):
-        shortstory =  get_object_or_404(ShortStory, pk=shortstory_id)
-        return render(request,'shortstories/detail.html',{'shortstory':shortstory})
+    shortstory =  get_object_or_404(ShortStory, pk=shortstory_id)
+    return render(request,'shortstories/detail.html',{'shortstory':shortstory})

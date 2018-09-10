@@ -21,7 +21,7 @@ from staticpages.views import IndexView
 urlpatterns = [
     path('shortstories/', include(('shortstories.urls', 'shortstories'), namespace='shortstories')),
     path('admin/', admin.site.urls),
-    path('podcasts/', include('podcasts.urls')),
+    path('podcasts/', include(('podcasts.urls','podcasts'), namespace= 'podcasts')),
     path('accounts/', include('allauth.urls')),
     path('', IndexView.as_view())
 ]
