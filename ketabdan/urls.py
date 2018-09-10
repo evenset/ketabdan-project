@@ -25,4 +25,3 @@ urlpatterns = [
     path('accounts/', include('allauth.urls')),
     path('', IndexView.as_view())
 ]
-
