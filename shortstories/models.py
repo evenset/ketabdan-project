@@ -10,5 +10,6 @@ class ShortStory(models.Model):
     )
     author = models.ForeignKey(User,on_delete = models.CASCADE) 
     title = models.CharField(max_length = 500)
+    body = models.TextField(default= "No story written by the author")
     status = models.CharField(max_length = 1, choices = PUBLICATION_STATUS)
     publication_date = models.DateField()
