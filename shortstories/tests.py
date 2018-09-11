@@ -16,7 +16,7 @@ class shortstoriesIndexViewTests(TestCase):
 
     def  test_current_shortstories(self):
         user_id = User.objects.create(id=1)
-        current_shortstories = create_shortstories(author= user_id, status ='p', title="Villete", body ="A romance written by Bronte Charlotte", publication_date ='2000-08-25')
+        current_shortstories = create_shortstories(author= user_id, status='p', title="Villete", body ="A romance written by Bronte Charlotte", publication_date ='2000-08-25')
         url = reverse('shortstories:index')
         response = self.client.get(url)
         self.assertContains(response, current_shortstories.title)
