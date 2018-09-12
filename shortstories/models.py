@@ -13,3 +13,6 @@ class ShortStory(models.Model):
     body = models.TextField(default= "No story written by the author")
     status = models.CharField(max_length = 1, choices = PUBLICATION_STATUS)
     publication_date = models.DateField()
+
+    def Snippet(self):
+        return (self.body[0:150])

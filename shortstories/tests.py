@@ -32,3 +32,11 @@ class shortstoriesDetailViewTests(TestCase):
         current_shortstory = create_shortstories(author=user_id, status='p', title ="Villete", body="A romance written by Bronte Charlotte", publication_date='2000-08-25')
         response = self.client.get(reverse('shortstories:detail', args=(current_shortstory.id,)))
         self.assertContains(response, current_shortstory.title)
+
+
+class shortstoriesfunction(TestCase):
+    def test_snippet_function(self):
+        user_id = User.objects.create(id=1)
+        current_shortstory = create_shortstories(author=user_id, status='p', title ="Villete", body="It was the hunter's first time outside Montana. He woke, stricken still with the hours-old vision of ascending through rose-lit cumulus, of houses and", publication_date='2000-08-25')
+        response = self.client.get(reverse('shortstories:index'))
+        self.assertEqual (len(current_shortstory.body),150)
