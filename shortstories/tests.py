@@ -39,20 +39,16 @@ class Shortstories_Snippet_function(TestCase):
         user_id = User.objects.create(id=1)
         current_shortstory = create_shortstories(author=user_id, status='p', title ="Villete", body="It was the hunter's first time outside Montana. He woke, stricken still with the hours-old vision of ascending through rose-lit cumulus, of houses and", publication_date='2000-08-25')
         snippet=current_shortstory.snippet()
-        self.assertEqual(len(snippet),150)
+        self.assertEqual(len(snippet),len(current_shortstory.body))
 
     def test_snippet_function_emptybody(self):
         user_id = User.objects.create(id=1)
-        current_shortstory = create_shortstories(author=user_id, status='p', title ="Villete", body="", publication_date='2000-08-25')
-        response = self.client.get(reverse('shortstories:index'))
+        current_shortstory = create_shortstories(author=user_id, status='p', title ="Villete", body="It was the hunter's first time outside Montana. He woke, stricke", publication_date='2000-08-25')
         snippet=current_shortstory.snippet()
-        self.assertEqual(snippet,"")
-        self.assertContains(response,"")
+        self.assertTrue(len(snippet)<150)
 
     def test_snippet_function_largebody(self):
         user_id = User.objects.create(id=1)
         current_shortstory = create_shortstories(author=user_id, status='p', title ="Villete", body="It was the hunter's first time outside Montana. He woke, stricken still with the hours-old vision of ascending through rose-lit cumulus, of houses and maryam jhjkchjkhdjkahjkdkh", publication_date='2000-08-25')
         snippet=current_shortstory.snippet()
-        self.assertTrue(len(snippet)>=150)
-
-
+        self.assertTrue(len(snippet)==150)
