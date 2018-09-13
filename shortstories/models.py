@@ -14,5 +14,5 @@ class ShortStory(models.Model):
     status = models.CharField(max_length = 1, choices = PUBLICATION_STATUS)
     publication_date = models.DateField()
 
-    def Snippet(self):
-        return (self.body[0:150])
+    def snippet(self):
+        return self.body[0:150]
