@@ -38,21 +38,21 @@ class Shortstories_Snippet_function(TestCase):
     def test_snippet_function(self):
         user_id = User.objects.create(id=1)
         current_shortstory = create_shortstories(author=user_id, status='p', title ="Villete", body="It was the hunter's first time outside Montana. He woke, stricken still with the hours-old vision of ascending through rose-lit cumulus, of houses and", publication_date='2000-08-25')
-        snippet=current_shortstory.snippet()
+        snippet=current_shortstory.snippet
         self.assertEqual(len(snippet),150)
 
     def test_snippet_function_emptybody(self):
         user_id = User.objects.create(id=1)
         current_shortstory = create_shortstories(author=user_id, status='p', title ="Villete", body="", publication_date='2000-08-25')
         response = self.client.get(reverse('shortstories:index'))
-        snippet=current_shortstory.snippet()
+        snippet=current_shortstory.snippet
         self.assertEqual(snippet,"")
         self.assertContains(response,"")
 
     def test_snippet_function_largebody(self):
         user_id = User.objects.create(id=1)
         current_shortstory = create_shortstories(author=user_id, status='p', title ="Villete", body="It was the hunter's first time outside Montana. He woke, stricken still with the hours-old vision of ascending through rose-lit cumulus, of houses and maryam jhjkchjkhdjkahjkdkh", publication_date='2000-08-25')
-        snippet=current_shortstory.snippet()
+        snippet=current_shortstory.snippet
         self.assertTrue(len(snippet)>=150)
 
 
