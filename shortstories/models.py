@@ -16,3 +16,5 @@ class ShortStory(models.Model):
 
     def snippet(self):
         return self.body[0:150]
+
+    snippet = property(snippet)
