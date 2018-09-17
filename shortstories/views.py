@@ -1,5 +1,5 @@
 from django.shortcuts import get_object_or_404, render
-from .models import ShortStory 
+from .models import ShortStory
 
 
 def index(request):
