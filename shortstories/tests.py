@@ -1,7 +1,7 @@
 from django.test import TestCase
 from .models import ShortStory
 from django.urls import reverse
-from shortstories.models import User
+from shortstories.models import User,minute_count
 
 
 def create_shortstories(author, status, title, body, publication_date):
@@ -34,7 +34,7 @@ class ShortstoriesDetailViewTests(TestCase):
         self.assertContains(response, current_shortstory.title)
 
 
-class Shortstories_Snippet_function(TestCase):
+class ShortstoriesSnippetFunction(TestCase):
     def test_snippet_function(self):
         user_id = User.objects.create(id=1)
         current_shortstory = create_shortstories(author=user_id, status='p', title="Villete", body="It was the hunter's first time outside Montana. He woke, stricken still with the hours-old vision of ascending through rose-lit cumulus, of houses and", publication_date='2000-08-25')
@@ -52,3 +52,22 @@ class Shortstories_Snippet_function(TestCase):
         current_shortstory = create_shortstories(author=user_id, status='p', title="Villete", body="It was the hunter's first time outside Montana. He woke, stricken still with the hours-old vision of ascending through rose-lit cumulus, of houses and maryam jhjkchjkhdjkahjkdkh", publication_date='2000-08-25')
         snippet=current_shortstory.snippet
         self.assertTrue(len(snippet)==150)
+
+class ShortstoriesMinuteCountFunction(TestCase):
+    def test_minute_count_function_emptytext(self):
+        user_id = User.objects.create(id=1)
+        current_shortstory = create_shortstories(author=user_id, status='p', title="Villete", body="", publication_date='2000-08-25')
+        current_shortstory.minute_to_read = minute_count(current_shortstory.body)
+        self.assertTrue(current_shortstory.minute_to_read==0)
+
+    def test_minute_count_function_shorttext(self):
+        user_id = User.objects.create(id=1)
+        current_shortstory = create_shortstories(author=user_id, status='p', title="Villete", body="It was the hunter's first time outside Montana. He woke", publication_date='2000-08-25')
+        current_shortstory.minute_to_read = minute_count(current_shortstory.body)
+        self.assertTrue(current_shortstory.minute_to_read==0)
+
+    def test_minute_count_function_longtext(self):
+        user_id = User.objects.create(id=1)
+        current_shortstory = create_shortstories(author=user_id, status='p', title="Villete", body="Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui. Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum. Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem. Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis faucibus. Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt. Duis leo. Sed fringilla mauris sit amet nibh. Donec sodales sagittis magna. Sed consequat, leo eget bibendum sodales, augue velit cursus nunc, It was the hunter's first time outside Montana. He woke, stricken still with the hours-old vision of ascending through rose-lit cumulus, of houses and mdhojdhudhfdhfu jhdijhdufig fbufh jhduigfiuygfuigf jgdydgyfuefoihfui dgdfuydgfugduidgyuidv  idguciydgyidgyidgydg hgddcydgchdbvyidgdidjb Forgiven? No. I am a bad, low woman; I despise myself and don't attempt to justify myself. It's not my husband but myself I have deceived. And not only just now; I have been deceiving myself for a long time. My husband may be a good, honest man, but he is a flunkey! I don't know what he does there, what his work is, but I know he is a flunkey! I was twenty when I was married to him. I have been tormented by curiosity; I wanted something better. 'There must be a different sort of life,' I said to myself. I wanted to live! To live, to live!... I was fired by curiosity ... you don't understand it, but, I swear to God, I could not control myself; something happened to me: I could not be restrained. I told my husband I was ill, and came here.... And here I have been walking about as though I were dazed, like a mad creature; and now I have become a vulgar, contemptible woman whom any one may despise.", publication_date='2000-08-25')
+        current_shortstory.minute_to_read = minute_count(current_shortstory.body)
+        self.assertTrue(current_shortstory.minute_to_read==1)
