@@ -6,4 +6,4 @@ class ShortStoryForm (forms.ModelForm):
 
     class Meta:
           model = ShortStory
-          fields = ('author','title', 'status','body')
+          fields = ('author','title', 'status','body','publication_date')
