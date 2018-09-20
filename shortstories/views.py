@@ -1,8 +1,13 @@
+<<<<<<< HEAD
 from django.shortcuts import get_object_or_404, render,redirect
 from .models import ShortStory 
 from .forms import ShortStoryForm
 from  django import forms
 
+=======
+from django.shortcuts import get_object_or_404, render
+from .models import ShortStory
+>>>>>>> develop
 
 
 def index(request):
