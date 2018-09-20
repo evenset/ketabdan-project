@@ -1,13 +1,8 @@
-<<<<<<< HEAD
-from django.shortcuts import get_object_or_404, render,redirect
+from  django.shortcuts import get_object_or_404, render,redirect
 from .models import ShortStory 
 from .forms import ShortStoryForm
 from  django import forms
-
-=======
-from django.shortcuts import get_object_or_404, render
-from .models import ShortStory
->>>>>>> develop
+from django.urls import reverse
 
 
 def index(request):
@@ -23,9 +18,8 @@ def create(request):
        form = ShortStoryForm(request.POST)
        if form.is_valid():
             post = form.save(commit=False)
-            post.body = forms.CharField(max_length = 3500)
             post.save()
-            return redirect('detail/', pk=post.pk)
+            return redirect(reverse('shortstories:detail', args=(post.id,)))
     else:
         form = ShortStoryForm()
     return render (request, 'shortstories/shortstories_edit.html' , {'form': form})
