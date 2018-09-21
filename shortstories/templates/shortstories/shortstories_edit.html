@@ -2,7 +2,12 @@
 
 {% block content %}
     <h1>New Short Story</h1>
-    <form method="POST" class="post-form">{% csrf_token %}
+    {% if form.errors %}
+        <p style="color: red;">
+            Please correct the error{{ form.errors|pluralize }} below.
+        </p>
+        {% endif %}
+    <form method="POST" class="post-form" novalidate>{% csrf_token %}
         {{ form.as_p }}
         <button type="submit" class="save btn btn-default">Save</button>
     </form>

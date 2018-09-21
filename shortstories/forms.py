@@ -1,6 +1,6 @@
-from django import forms
+from  django import forms
 from .models import ShortStory
-
+from  django.core import validators
 
 class ShortStoryForm (forms.ModelForm):
 
@@ -8,4 +8,4 @@ class ShortStoryForm (forms.ModelForm):
 
     class Meta:
           model = ShortStory
-          fields = ('author','title', 'status','body','publication_date', 'minutes_to_read')
+          fields = ('author','title','status','body','publication_date','minutes_to_read')

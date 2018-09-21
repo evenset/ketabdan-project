@@ -2,7 +2,7 @@ from  django.shortcuts import get_object_or_404, render,redirect
 from .models import ShortStory 
 from .forms import ShortStoryForm
 from  django import forms
-from django.urls import reverse
+from  django.urls import reverse
 
 
 def index(request):
@@ -22,4 +22,4 @@ def create(request):
             return redirect(reverse('shortstories:detail', args=(post.id,)))
     else:
         form = ShortStoryForm()
-    return render (request, 'shortstories/shortstories_edit.html' , {'form': form})
+    return render (request, 'shortstories/shortstories_edit.html',{'form': form})
