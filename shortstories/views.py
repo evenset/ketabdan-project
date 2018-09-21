@@ -22,4 +22,4 @@ def create(request):
             return redirect(reverse('shortstories:detail', args=(post.id,)))
     else:
         form = ShortStoryForm()
-    return render (request, 'shortstories/shortstories_edit.html',{'form': form})
+    return render (request, 'shortstories/shortstories_edit.html', {'form':form})
