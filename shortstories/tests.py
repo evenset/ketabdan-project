@@ -3,7 +3,6 @@ from .models import ShortStory
 from django.urls import reverse
 from shortstories.models import User,minute_count
 
-
 def create_shortstories(author, status, title, body, publication_date):
     return ShortStory.objects.create(author=author, status=status, title=title, body=body, publication_date=publication_date)
 
