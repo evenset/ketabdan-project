@@ -1,9 +1,10 @@
 from  django import forms
 from .models import ShortStory
+from django.forms import widgets
 
 class ShortStoryForm (forms.ModelForm):
 
-    body = forms.CharField(widget=forms.Textarea(attrs={'minlength':'35000',}))
+    body = forms.CharField(min_length='3500', widget=widgets.Textarea)
 
     class Meta:
           model = ShortStory
