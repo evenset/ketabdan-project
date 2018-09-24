@@ -1,0 +1,16 @@
+{% extends 'base/index.html' %}
+{% block title %}
+    Create new short story 
+{% endblock %}
+{% block content %}
+    <h1>New Short Story</h1>
+    {% if form.errors %}
+        <p style="color: red;">
+           Please correct the error{{ form.errors|pluralize }} below.
+        </p>
+        {% endif %}
+    <form  action="" method="POST" class="post-form" novalidate>{% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="save btn btn-default">Save</button>
+    </form>
+{% endblock %}
