@@ -13,10 +13,12 @@
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                   {% if user.is_authenticated %}
                       <a class="dropdown-item" href="{% url 'account_logout' %}">Logout</a>
+                      <a class="dropdown-item" href="http://localhost:8000/accounts/login/?next=/shortstories/new/">New Short Stories</a>
                   {% else %}
                       <a class="dropdown-item" href="{% url 'account_signup' %}">Register</a>
                       <a class="dropdown-item" href="{% url 'account_login' %}">Sign In</a>
                   {% endif %}
+
             </div>
         </li>
     </ul>
