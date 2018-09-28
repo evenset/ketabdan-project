@@ -3,6 +3,8 @@ from .models import ShortStory
 from .forms import ShortStoryForm
 from  django import forms
 from  django.urls import reverse
+from  django.utils.decorators import method_decorator
+from django.contrib.auth.decorators import login_required
 
 def index(request):
     shortstory_list = ShortStory.objects.order_by('publication_date')
@@ -12,6 +14,7 @@ def detail(request, shortstory_id):
     shortstory =  get_object_or_404(ShortStory, pk=shortstory_id)
     return render(request,'shortstories/detail.html',{'shortstory':shortstory})
 
+@login_required
 def create(request):
     if request.method == "POST":
        form = ShortStoryForm(request.POST)
