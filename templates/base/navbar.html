@@ -1,7 +1,7 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <a class="navbar-brand" href="/">Ketabdan Online Publishing</a>
-  <a class="navbar-brand" href="http://localhost:8000/shortstories/">Short Stories</a>
-  <a class="navbar-brand" href="http://localhost:8000/podcasts/">Podcasts</a>
+  <a class="nav-item nav-link active" href="{% url 'shortstories:index' %}">Short Stories</a>
+  <a class="nav-item nav-link active" href="{% url 'podcasts:index' %}">Podcasts</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
           aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -14,8 +14,9 @@
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                   {% if user.is_authenticated %}
+                      <a class="dropdown-item" class="nav-item nav-link active" href="{% url 'shortstories:create' %}">New Short Stories</a>
+                      <div class="dropdown-divider"></div>
                       <a class="dropdown-item" href="{% url 'account_logout' %}">Logout</a>
-                      <a class="dropdown-item" href="http://localhost:8000/accounts/login/?next=/shortstories/new/">New Short Stories</a>
                   {% else %}
                       <a class="dropdown-item" href="{% url 'account_signup' %}">Register</a>
                       <a class="dropdown-item" href="{% url 'account_login' %}">Sign In</a>
