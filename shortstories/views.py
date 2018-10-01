@@ -3,7 +3,6 @@ from .models import ShortStory
 from .forms import ShortStoryForm
 from  django import forms
 from  django.urls import reverse
-from  django.utils.decorators import method_decorator
 from django.contrib.auth.decorators import login_required
 
 def index(request):
