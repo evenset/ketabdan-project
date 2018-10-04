@@ -1,8 +1,10 @@
-from django.test import TestCase,client
+from django.test import TestCase,Client
 from .models import ShortStory
 from django.urls import reverse
 from shortstories.models import User,minute_count
 from .forms import ShortStoryForm
+from django.contrib.auth.models import User
+
 
 def create_shortstories(author, status, title, body, publication_date):
     return ShortStory.objects.create(author=author, status=status, title=title, body=body, publication_date=publication_date)
@@ -87,3 +89,10 @@ class ShortstoriesCreateViewTests(TestCase):
     def  test_no_new_shortstory(self):
          response = self.client.get(reverse('shortstories:detail', args=(7645392,)))
          self.assertEquals(response.status_code, 404)
+
+    def test_redirects_to_test_page_on_loggedin(self):
+        user = User.objects.create(username='testuser', password='12345')
+        c = Client()
+        logged_in = c.login(username='testuser', password='12345')
+        response = self.client.get(reverse('shortstories:create'))
+        self.assertRedirects(response, reverse('shortstories:create'))
