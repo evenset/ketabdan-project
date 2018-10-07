@@ -90,9 +90,12 @@ class ShortstoriesCreateViewTests(TestCase):
          response = self.client.get(reverse('shortstories:detail', args=(7645392,)))
          self.assertEquals(response.status_code, 404)
 
-    def test_redirects_to_test_page_on_loggedin(self):
-        user = User.objects.create(username='testuser', password='12345')
-        c = Client()
-        logged_in = c.login(username='testuser', password='12345')
+    def test_goes_to_test_page_on_loggedin(self):
+        user = User.objects.create(username='testuser')
+        user.set_password('12345') # you need to call set password to store the hash in DB
+        user.save()
+        login = self.client.login(username='testuser', password='12345')
+        self.assertTrue(login) 
         response = self.client.get(reverse('shortstories:create'))
-        self.assertRedirects(response, reverse('shortstories:create'))
+        self.assertEquals(response.status_code, 200)
+        # self.asset(response, reverse('shortstories:create'))
