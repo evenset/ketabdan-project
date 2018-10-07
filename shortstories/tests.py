@@ -86,16 +86,26 @@ class ShortStoryFormTests(TestCase):
         self.assertTrue(form.is_valid())
 
 class ShortstoriesCreateViewTests(TestCase):
+
+    def setUp(self):
+        """
+        Set up is called before running these tests in the main class
+        """
+        user = User.objects.create(username='testuser')
+        user.set_password('12345') # you need to call set password to store the hash in DB
+        user.save()
+
     def  test_no_new_shortstory(self):
          response = self.client.get(reverse('shortstories:detail', args=(7645392,)))
          self.assertEquals(response.status_code, 404)
 
-    def test_goes_to_test_page_on_loggedin(self):
-        user = User.objects.create(username='testuser')
-        user.set_password('12345') # you need to call set password to store the hash in DB
-        user.save()
+    def test_loggedin_users_see_the_form(self):
         login = self.client.login(username='testuser', password='12345')
         self.assertTrue(login) 
         response = self.client.get(reverse('shortstories:create'))
         self.assertEquals(response.status_code, 200)
-        # self.asset(response, reverse('shortstories:create'))
+    
+    def test_unauthenticated_users_get_redirected(self):
+        response = self.client.get(reverse('shortstories:create'))
+        expected_url = reverse('account_login') + "?next=" + reverse('shortstories:create')
+        self.assertRedirects(response, expected_url, status_code=302, target_status_code=200)
