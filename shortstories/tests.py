@@ -85,7 +85,7 @@ class ShortStoryFormTests(TestCase):
         form = ShortStoryForm(data={'author':user.id, 'status':'p', 'title':"Villette", 'body':"a"*3501, 'publication_date':'2000-08-30'})
         self.assertTrue(form.is_valid())
 
-class ShortstoriesCreateViewTests(TestCase):
+class ShortStoriesCreateViewTests(TestCase):
 
     def setUp(self):
         """
